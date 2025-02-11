@@ -18,7 +18,7 @@ function taskButtonClick(taskNumber) {
     menuobj.innerHTML = ""
     taskData[taskNumber].forEach(element => {
         var e = document.createElement('div')
-        e.innerHTML(element)
+        e.innerHTML = element
         menuobj.appendChild(e)
     });   
 }
