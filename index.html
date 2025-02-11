@@ -2,7 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>plan tree</title>
+        <style>
+            body {
+                overflow: hidden;
+            }
+            .scroll {
+                overflow: scroll;
+            }
+        </style>
     </head>
     <body>
         <div id="TopBar">
@@ -16,8 +25,8 @@
         </div>
         <div id="menu">
         </div>
-        <div id="tasks">
-        <button type="button" onclick="newTask()">new task</button>
+        <div id="tasks" class="scroll">
+            <button type="button" onclick="newTask()">new task</button>
         </div>
         <script src="src/js/main.js"></script>
     </body>

@@ -6,16 +6,14 @@ let taskData = {}
 let taskCount = 0
 function newTask() {
     var taskobj = document.getElementById("tasks")
-    taskobj.appendChild(document.createElement(TaskTemplate()))
-    taskData[taskCount.toString()].name = "new task";
-    taskData[taskCount.toString()].info = "this is a new task"
-    taskData[taskCount.toString()].status = "working on it"
+    taskobj.appendChild(document.createElement('div',TaskTemplate()))
+    taskData[taskCount] = ["new task","this is a new task","working on it"]
+    console.log(taskData)
 }
 function taskButtonClick(taskNumber) {
     var menuobj = document.getElementById("menu")
-    var Keys = taskData[taskNumber.toString()]
-    Keys.forEach(element => {
-        menuobj.appendChild(document.createElement('<p>' + taskData[taskNumber.toString()][element] + '</p>'))
-    });
-    
+    menuobj.innerHTML = ""
+    taskData[taskNumber].forEach(element => {
+        menuobj.appendChild(document.createElement('div', element))
+    });   
 }
