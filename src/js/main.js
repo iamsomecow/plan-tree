@@ -22,6 +22,7 @@ function taskButtonClick(taskNumber) {
         menuobj.appendChild(e);
         var a = document.createElement('button');
         a.type = "button";
+        a
         a.innerHTML = "edit";
         menuobj.appendChild(a);
     });   
