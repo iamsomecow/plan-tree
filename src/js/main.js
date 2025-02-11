@@ -8,7 +8,7 @@ function newTask() {
     taskCount++
     var taskobj = document.getElementById("tasks")
     var e = document.createElement('div')
-    e.innerHTML(TaskTemplate())
+    e.innerHTML = TaskTemplate()
     taskobj.appendChild(e)
     taskData[taskCount] = ["new task","this is a new task","working on it"]
     console.log(taskData)
