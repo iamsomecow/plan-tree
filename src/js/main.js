@@ -1,7 +1,7 @@
 let taskData = {};
 let taskCount = 0;
 function TaskTemplate(name = "new task") {
-return '<button type="button" onclick="taskButtonClick('+ taskCount.toString() +')">' + name +'</button>';
+return '<button type="button" class="tasks" onclick="taskButtonClick('+ taskCount.toString() +')">' + name +'</button>';
 
 }
 function newTask() {
