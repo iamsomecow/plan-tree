@@ -1,3 +1,12 @@
+body {              
+    background-color: dimgray;
+}
+.menu {
+    display: block;
+    background-color: silver;
+    border-radius: 0 0 20px 20px;
+    margin: 5%;
+}
 .Topbar {
     display: block;
 -webkit-box-sizing: content-box;
@@ -11,7 +20,7 @@ position: static;
 cursor: default;
 opacity: 1;
 margin: -1px;
-padding: 20px;
+padding: 0px;
 overflow: hidden;
 border: none;
 -webkit-border-radius: 0 0 20px 20px;
@@ -51,6 +60,7 @@ overflow: hidden;
   box-sizing: content-box;
   width: 100%;
   cursor: pointer;
+  margin: 5%;
   padding: 10px 20px;
   border: 3px solid #000000;
   -webkit-border-radius: 2px;
@@ -76,6 +86,7 @@ overflow: hidden;
     background: #444242;
 }
 .newtasks{
+    margin: 5%;
     display: inline-block;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -98,4 +109,10 @@ overflow: hidden;
   -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
   -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
   transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+.newtasks:hover {
+    background: #0f8f18;
+}
+.newtasks.active {
+    background: #5e9762;
 }
