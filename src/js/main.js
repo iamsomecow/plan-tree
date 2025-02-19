@@ -26,9 +26,10 @@ function taskButtonClick(taskNumber) {
         a.onclick = () => {
             
             var i = document.createElement('div')
+            
             i.innerHTML = `<label for="simpleInput">edit task:</label>
             <input type="text" id="input" name="simpleInput" placeholder="Enter text here">
-            <button onclick="SubmitEdit(this)">Submit</button>
+            <button onclick="SubmitEdit(this,`+ taskNumber +`)">Submit</button>
             <button onclick="CancelEdit(this)">Cancel</button>`
             e.appendChild(i);
         }
@@ -37,10 +38,12 @@ function taskButtonClick(taskNumber) {
         
     });   
 }
-function SubmitEdit(button) {
+function SubmitEdit(button,taskNumber) {
     var div = button.parentNode;
     var parent = div.parentNode;
     var input = div.querySelector('#input');
+    
+    taskData[taskNumber][parent.innerHTML] = input.value;
     parent.innerHTML = input.value;
     
 }
