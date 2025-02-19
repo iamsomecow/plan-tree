@@ -9,6 +9,7 @@ function newTask() {
     var taskobj = document.getElementById("tasks");
     var e = document.createElement('div');
     e.innerHTML = TaskTemplate();
+    e.id = taskCount
     taskobj.appendChild(e);
     taskData[taskCount] = ["new task","this is a new task","working on it"];
     console.log(taskData);
@@ -47,6 +48,11 @@ function SubmitEdit(button,taskNumber,i) {
     div.remove(); 
     taskData[taskNumber][i] = input.value;
     parent.innerHTML = input.value;
+    if (i === 0) {
+        var menu = document.getElementById("menu");
+        var task = menu.querySelector("#" + taskNumber);
+        task.innerHTML = input.value;
+    }
     
 }
 function CancelEdit(button) {
