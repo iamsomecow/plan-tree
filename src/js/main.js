@@ -39,11 +39,11 @@ function taskButtonClick(taskNumber) {
 }
 function SubmitEdit(i) {
     var ii = i.parentEllement.parentEllement;
-    var iii = i.querySelector('#input')
+    var iii = i.parentEllement.querySelector('#input')
     ii.innerHTML = iii.value
     
 }
 function CancelEdit(i) {
-    i.remove();
+    i.parentEllement.remove();
 }
 
