@@ -37,13 +37,15 @@ function taskButtonClick(taskNumber) {
         
     });   
 }
-function SubmitEdit(i) {
-    var ii = i.parentEllement.parentEllement;
-    var iii = i.parentEllement.querySelector('#input')
-    ii.innerHTML = iii.value
+function SubmitEdit(button) {
+    var div = button.parentEllement;
+    var parent = div.parentEllement;
+    var input = div.querySelector('#input');
+    parent.innerHTML = input.value;
     
 }
-function CancelEdit(i) {
-    i.parentEllement.remove();
+function CancelEdit(button) {
+    var div = button.parentEllement;
+    div.remove();
 }
 
