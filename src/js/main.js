@@ -23,7 +23,7 @@ function taskButtonClick(taskNumber) {
         var a = document.createElement('button');
         a.type = "button";
         
-        a.onclick(l => {
+        a.onclick = () => {
             var id = taskData[taskNumber].indexOf(element)
             var i = document.createElement(div)
             i.innerHTML = `<label for="simpleInput">edit task:</label>
@@ -31,7 +31,7 @@ function taskButtonClick(taskNumber) {
             <button onclick="SubmitEdit(this)">Submit</button>
             <button onclick="CancelEdit(this)">Canc el</button>`
             e.appendChild(i);
-        })
+        }
         a.innerHTML = "edit";
         menuobj.appendChild(a);
     });   
