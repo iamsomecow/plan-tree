@@ -16,9 +16,9 @@ function newTask() {
 function taskButtonClick(taskNumber) {
     var menuobj = document.getElementById("menu");
     menuobj.innerHTML = "";
-    var i = -1;
+    var q = -1;
     taskData[taskNumber].forEach(element => {
-        i++;
+        q++;
         var e = document.createElement('div');
         e.innerHTML = element;
         menuobj.appendChild(e);
@@ -31,7 +31,7 @@ function taskButtonClick(taskNumber) {
             
             i.innerHTML = `<label for="simpleInput">edit task:</label>
             <input type="text" id="input" name="simpleInput" placeholder="Enter text here">
-            <button onclick="SubmitEdit(this,`+ taskNumber + i +`)">Submit</button>
+            <button onclick="SubmitEdit(this,`+ taskNumber +"," +q +`)">Submit</button>
             <button onclick="CancelEdit(this)">Cancel</button>`
             e.appendChild(i);
         }
