@@ -24,14 +24,14 @@ function taskButtonClick(taskNumber) {
         menuobj.appendChild(e);
         var a = document.createElement('button');
         a.type = "button";
-        
+        a.id = q;
         a.onclick = () => {
             
             var i = document.createElement('div')
             
             i.innerHTML = `<label for="simpleInput">edit task:</label>
             <input type="text" id="input" name="simpleInput" placeholder="Enter text here">
-            <button onclick="SubmitEdit(this,`+ taskNumber +"," +q +`)">Submit</button>
+            <button onclick="SubmitEdit(this,`+ taskNumber +"," + a.id +`)">Submit</button>
             <button onclick="CancelEdit(this)">Cancel</button>`
             e.appendChild(i);
         }
