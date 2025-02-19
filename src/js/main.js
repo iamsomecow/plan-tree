@@ -49,8 +49,8 @@ function SubmitEdit(button,taskNumber,i) {
     taskData[taskNumber][i] = input.value;
     parent.innerHTML = input.value;
     if (i === 0) {
-        var menu = document.getElementById("menu");
-        var task = menu.querySelector("#" + taskNumber);
+        var tasks = document.getElementById("tasks");
+        var task = tasks.children.item(taskNumber);
         task.innerHTML = input.value;
     }
     
