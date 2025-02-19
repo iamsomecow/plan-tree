@@ -38,14 +38,14 @@ function taskButtonClick(taskNumber) {
     });   
 }
 function SubmitEdit(button) {
-    var div = button.parentEllement;
-    var parent = div.parentEllement;
+    var div = button.parentNode;
+    var parent = div.parentNode;
     var input = div.querySelector('#input');
     parent.innerHTML = input.value;
     
 }
 function CancelEdit(button) {
-    var div = button.parentEllement;
+    var div = button.parentNode;
     div.remove();
 }
 
