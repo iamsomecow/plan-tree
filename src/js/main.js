@@ -1,14 +1,14 @@
 let taskData = {};
 let taskCount = 0;
-function TaskTemplate(name = "new task") {
-return '<button type="button" class="tasks" onclick="taskButtonClick('+ taskCount.toString() +')">' + name +'</button>';
+function TaskTemplate(number, name = "new task") {
+return '<button type="button" class="tasks" onclick="taskButtonClick('+ number +')">' + name +'</button>';
 
 }
 function newTask() {
     taskCount++;
     var taskobj = document.getElementById("tasks");
     var e = document.createElement('div');
-    e.innerHTML = TaskTemplate();
+    e.innerHTML = TaskTemplate(taskCount);
     e.id = taskCount
     taskobj.appendChild(e);
     taskData[taskCount] = ["new task","this is a new task","working on it"];
@@ -17,15 +17,12 @@ function newTask() {
 function taskButtonClick(taskNumber) {
     var menuobj = document.getElementById("menu");
     menuobj.innerHTML = "";
-    var q = -1;
     taskData[taskNumber].forEach(element => {
-        q++;
         var e = document.createElement('div');
         e.innerHTML = element;
         menuobj.appendChild(e);
         var a = document.createElement('button');
         a.type = "button";
-        a.id = q;
         a.onclick = () => {
             
             var i = document.createElement('div')
@@ -51,7 +48,7 @@ function SubmitEdit(button,taskNumber,i) {
     if (i === 0) {
         var tasks = document.getElementById("tasks");
         var task = tasks.children.item(taskNumber);
-        task.innerHTML = input.value;
+        task.innerHTML = TaskTemplate(taskNumber, input.value);
     }
     
 }
