@@ -17,12 +17,15 @@ function newTask() {
 function taskButtonClick(taskNumber) {
     var menuobj = document.getElementById("menu");
     menuobj.innerHTML = "";
+    var q = -1;
     taskData[taskNumber].forEach(element => {
+        q++;
         var e = document.createElement('div');
         e.innerHTML = element;
         menuobj.appendChild(e);
         var a = document.createElement('button');
         a.type = "button";
+        a.id = q;
         a.onclick = () => {
             
             var i = document.createElement('div')
