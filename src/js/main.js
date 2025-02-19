@@ -42,7 +42,7 @@ function SubmitEdit(button,taskNumber) {
     var div = button.parentNode;
     var parent = div.parentNode;
     var input = div.querySelector('#input');
-    
+    div.remove(); 
     taskData[taskNumber][parent.innerHTML] = input.value;
     parent.innerHTML = input.value;
     
