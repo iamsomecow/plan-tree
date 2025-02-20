@@ -38,6 +38,7 @@ function loadTasks() {
     var taskobj = document.getElementById("tasks");
     taskobj.innerHTML = "";
     taskCount = 0;
+    if (taskData.Data[taskData.path.path()] !== null) {
     taskData.Data[taskData.path.path()].forEach(element => {
         
     
@@ -47,7 +48,7 @@ function loadTasks() {
     taskobj.appendChild(e)
 
     });
-
+}
 }
 function TaskTemplate(number, name = "new task") {
     return '<button type="button" class="tasks" onclick="taskButtonClick('+ number +')">' + name +'</button>';
