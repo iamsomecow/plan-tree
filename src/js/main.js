@@ -93,6 +93,7 @@ function taskButtonClick(taskNumber) {
      taskData.path.setPathDown();
      loadTasks();
     }
+    menuobj.appendChild(o);
 }
 
 function SubmitEdit(button, taskNumber, i) {
