@@ -17,14 +17,14 @@ class Path {
         this.current -= 1;
     }
 }
-class taskData {
+class TaskData {
 Data = {}
 path = new Path()
 Task(number, data) {
 Data[this.path.path()][number].data = data
 }
 }
-
+var taskData = new TaskData();
 
 
 taskCount = 0;
@@ -40,7 +40,7 @@ function newTask() {
     e.id = taskCount
     taskobj.appendChild(e);
     taskData.Task(taskCount,["new task","this is a new task","working on it"])
-    console.log(taskData);
+    
     
 }
 function taskButtonClick(taskNumber) {
