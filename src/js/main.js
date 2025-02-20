@@ -21,7 +21,7 @@ class TaskData {
 Data = {}
 path = new Path()
 Task(number, data) {
-Data[this.path.path()][number].data = data
+this.Data[this.path.path()][number].data = data
 }
 }
 var taskData = new TaskData();
