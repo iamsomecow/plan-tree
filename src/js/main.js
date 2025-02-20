@@ -39,6 +39,7 @@ function loadTasks() {
     taskobj.innerHTML = "";
     taskCount = 0;
     if (taskData.Data[taskData.path.path()] !== null) {
+        console.log(taskData.Data[taskData.path.path()]);
     taskData.Data[taskData.path.path()].forEach(element => {
         
     
