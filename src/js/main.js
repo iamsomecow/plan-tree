@@ -36,9 +36,9 @@ var taskData = new TaskData();
 var taskCount = 0;
 function loadTasks() {
     var taskobj = document.getElementById("tasks");
-    taskobj.innerHTML = "";
+    taskobj.innerHTML = '<button type="button" class="newtasks" onclick="newTask()">new task</button>';
     taskCount = 0;
-    if (taskData.Data[taskData.path.path()] !== null) {
+    if (taskData.Data[taskData.path.path()] !== undefined) {
         console.log(taskData.Data[taskData.path.path()]);
     taskData.Data[taskData.path.path()].forEach(element => {
         
@@ -67,9 +67,9 @@ function newTask() {
 
 function taskButtonClick(taskNumber) {
     var menuobj = document.getElementById("menu");
-    menuobj.innerHTML = '<button type="button" class="newtasks" onclick="newTask()">new task</button>';
+    menuobj.innerHTML = '';
     var q = -1;
-    if (taskData.Data[taskData.path.path()][taskNumber].data !== null) {
+    if (taskData.Data[taskData.path.path()][taskNumber].data !== undefined) {
         
     
     taskData.Data[taskData.path.path()][taskNumber].data.forEach(element => {
