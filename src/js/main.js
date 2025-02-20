@@ -121,6 +121,6 @@ function CancelEdit(button) {
     div.remove();
 }
 function up() {
-    taskData.path.Path();
+    taskData.path.setPathUp();
     loadTasks();
 }
