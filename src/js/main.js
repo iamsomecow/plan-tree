@@ -1,7 +1,7 @@
 class Path {
     data = ['0']
     current = 0 
-    
+
     path() {
         let concat = "";
         this.data.forEach((element) => {
@@ -34,7 +34,21 @@ class TaskData {
 
 var taskData = new TaskData();
 var taskCount = 0;
+function loadTasks() {
+    var taskobj = document.getElementById("tasks");
+    taskobj.innerHTML = "";
+    taskCount = 0;
+    taskData.Data[taskData.path.path()].forEach(element => {
+        
+    
+    var e = document.createElement('div');
+    
+    e.innerHTML = TaskTemplate(taskCount, element[0]);
+    taskobj.appendChild(e)
 
+    });
+
+}
 function TaskTemplate(number, name = "new task") {
     return '<button type="button" class="tasks" onclick="taskButtonClick('+ number +')">' + name +'</button>';
 }
@@ -71,7 +85,14 @@ function taskButtonClick(taskNumber) {
         }
         a.innerHTML = "edit";
         menuobj.appendChild(a);
-    });   
+        
+    }); 
+    var o = document.createElement("button")  
+    o.type = "button"
+    o.onclick = () => {
+     taskData.path.setPathDown();
+     loadTasks();
+    }
 }
 
 function SubmitEdit(button, taskNumber, i) {
@@ -91,4 +112,8 @@ function SubmitEdit(button, taskNumber, i) {
 function CancelEdit(button) {
     var div = button.parentNode;
     div.remove();
+}
+function up() {
+    taskData.path.Path();
+    loadTasks();
 }
