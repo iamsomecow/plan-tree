@@ -16,7 +16,12 @@ class Path {
     }
 
     setPathUp() {
-        this.current -= 1;
+        if (current !== 0) {
+            this.data.pop();
+            this.current -= 1;    
+            return true;
+        }
+        return false;
     }
 }
 
@@ -122,6 +127,7 @@ function CancelEdit(button) {
     div.remove();
 }
 function up() {
-    taskData.path.setPathUp();
-    loadTasks();
+    if (taskData.path.setPathUp()) {
+        loadTasks();
+    }
 }
