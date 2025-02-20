@@ -16,7 +16,7 @@ class Path {
     }
 
     setPathUp() {
-        if (current !== 0) {
+        if (this.current !== 0) {
             this.data.pop();
             this.current -= 1;    
             return true;
