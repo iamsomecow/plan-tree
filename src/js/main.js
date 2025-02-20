@@ -40,7 +40,8 @@ function loadTasks() {
     taskCount = 0;
     if (taskData.Data[taskData.path.path()] !== undefined) {
         console.log(taskData.Data[taskData.path.path()]);
-    taskData.Data[taskData.path.path()].forEach(element => {
+    var p = taskData.Data[taskData.path.path()].values();
+    p.forEach(element => {
         
     
     var e = document.createElement('div');
