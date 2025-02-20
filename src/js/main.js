@@ -1,5 +1,33 @@
-let taskData = {};
-let taskCount = 0;
+class Path {
+    data = ['0']
+    
+    current = 0 
+    path() {
+        let concat = "";
+        this.data.forEach((element) => {
+            concat += element + ".";
+        })
+        return concat;
+    }
+    setPathDown(number){
+        this.current++;
+        this.data[this.current] = number;
+    }
+    setPathUp(){
+        this.current -= 1;
+    }
+}
+class taskData {
+Data = {}
+path = new Path()
+Task(number, data) {
+Data[this.path.path()][number].data = data
+}
+}
+
+
+
+taskCount = 0;
 function TaskTemplate(number, name = "new task") {
 return '<button type="button" class="tasks" onclick="taskButtonClick('+ number +')">' + name +'</button>';
 
@@ -11,14 +39,15 @@ function newTask() {
     e.innerHTML = TaskTemplate(taskCount);
     e.id = taskCount
     taskobj.appendChild(e);
-    taskData[taskCount] = ["new task","this is a new task","working on it"];
+    taskData.Task(taskCount,["new task","this is a new task","working on it"])
     console.log(taskData);
+    
 }
 function taskButtonClick(taskNumber) {
     var menuobj = document.getElementById("menu");
     menuobj.innerHTML = "";
     var q = -1;
-    taskData[taskNumber].forEach(element => {
+    taskData[taskData.path.path()][taskNumber].forEach(element => {
         q++;
         var e = document.createElement('div');
         e.innerHTML = element;
@@ -46,7 +75,7 @@ function SubmitEdit(button,taskNumber,i) {
     var parent = div.parentNode;
     var input = div.querySelector('#input');
     div.remove(); 
-    taskData[taskNumber][i] = input.value;
+    taskData[taskData.path.path()][taskNumber][i] = input.value;
     parent.innerHTML = input.value;
     if (i === 0) {
         var tasks = document.getElementById("tasks");
