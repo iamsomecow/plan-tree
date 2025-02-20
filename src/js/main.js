@@ -65,8 +65,11 @@ function newTask() {
 
 function taskButtonClick(taskNumber) {
     var menuobj = document.getElementById("menu");
-    menuobj.innerHTML = "";
+    menuobj.innerHTML = '<button type="button" class="newtasks" onclick="newTask()">new task</button>';
     var q = -1;
+    if (taskData.Data[taskData.path.path()][taskNumber].data !== null) {
+        
+    
     taskData.Data[taskData.path.path()][taskNumber].data.forEach(element => {
         q++;
         var e = document.createElement('div');
@@ -94,6 +97,7 @@ function taskButtonClick(taskNumber) {
      loadTasks();
     }
     menuobj.appendChild(o);
+}
 }
 
 function SubmitEdit(button, taskNumber, i) {
