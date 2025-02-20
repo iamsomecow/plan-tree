@@ -40,7 +40,7 @@ function loadTasks() {
     taskCount = 0;
     if (taskData.Data[taskData.path.path()] !== undefined) {
         console.log(taskData.Data[taskData.path.path()]);
-    var p = taskData.Data[taskData.path.path()].values();
+    var p = Object.values(taskData.Data[taskData.path.path()])
     p.forEach(element => {
         
     
