@@ -75,7 +75,7 @@ function taskButtonClick(taskNumber) {
     var menuobj = document.getElementById("menu");
     menuobj.innerHTML = '';
     var q = -1;
-    console.log(taskData.Data[TaskData.path.path()])
+    console.log(taskData.Data[taskData.path.path()])
     if (taskData.Data[taskData.path.path()][taskNumber].data !== undefined) {
         taskData.Data[taskData.path.path()][taskNumber].data.forEach(element => {
         q++;
