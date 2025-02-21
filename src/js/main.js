@@ -53,7 +53,7 @@ function loadTasks() {
     
     e.innerHTML = TaskTemplate(taskCount, element[0]);
     taskobj.appendChild(e)
-
+    taskCount++;
     });
 }
 }
