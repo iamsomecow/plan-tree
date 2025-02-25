@@ -91,6 +91,7 @@ function taskButtonClick(taskNumber) {
             <input type="text" id="input" name="simpleInput" placeholder="Enter text here">
             <button onclick="SubmitEdit(this,`+ taskNumber + "," + a.id + `)">Submit</button>
             <button onclick="CancelEdit(this)">Cancel</button>`;
+            i.class = "editMenu"
             e.appendChild(i);
         }
         a.innerHTML = "edit";
@@ -99,6 +100,7 @@ function taskButtonClick(taskNumber) {
     }); 
     var o = document.createElement("button")  
     o.type = "button"
+    o.innerHTML = "subTasks"
     o.onclick = () => {
      taskData.path.setPathDown();
      loadTasks();

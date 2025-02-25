@@ -8,6 +8,13 @@ body {
     margin: 5px;
     padding: 10px;
 }
+.editMenu {
+    display: block;
+    background-color: slategrey;
+    border-radius: 20px;
+    margin: 5px;
+    padding: 10px;
+}
 .Topbar {
     display: block;
 -webkit-box-sizing: content-box;
