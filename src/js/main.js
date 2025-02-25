@@ -106,6 +106,17 @@ function taskButtonClick(taskNumber) {
      t.innerHTML += "<div>" + taskData.Data[taskData.path.path()][taskNumber].data[0] + "/</div>"
      taskData.path.setPathDown(taskNumber);
      loadTasks();
+    var v = document.createElement("button") 
+    v.type = "button"
+    v.innerHTML("Delete")
+    v.style = "background-color: red"
+    v.onclick = () => {
+        if(confirm("are you shere you want to delete this task and its subtasks? ")){
+            deleteSubTasks(taskNumber + ".")
+            taskData.Data[taskData.path.path()][taskNumber] = undefined;
+        }
+    }
+
      
     }
     menuobj.appendChild(o);
@@ -138,3 +149,13 @@ function up() {
         g.remove;
     }
 }
+function deleteSubTasks(subPath){
+    if (taskData.Data[taskData.path.path() + subPath] !== undefined) {
+        var d = Object.keys(taskData.Data[taskData.path.path() + subPath]);
+        d.forEach(element => {
+            deleteSubTasks(subPath + element + ".");
+        })
+        taskData.Data[taskData.path.path() + subPath] = undefined;
+    }
+}
+ 
