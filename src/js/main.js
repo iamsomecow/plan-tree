@@ -102,8 +102,11 @@ function taskButtonClick(taskNumber) {
     o.type = "button"
     o.innerHTML = "subtasks"
     o.onclick = () => {
+        var t = document.getElementById("path");
+     t.innerHTML += "<div>" + taskData.Data[taskData.path.path()][taskNumber].data[0] + "/</div>"
      taskData.path.setPathDown(taskNumber);
      loadTasks();
+     
     }
     menuobj.appendChild(o);
 }
@@ -130,5 +133,8 @@ function CancelEdit(button) {
 function up() {
     if (taskData.path.setPathUp()) {
         loadTasks();
+        var t = document.getElementById("path");
+        var g = t.children.item(t.children.length)
+        g.remove;
     }
 }
