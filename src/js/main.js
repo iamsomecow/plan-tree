@@ -47,13 +47,12 @@ function loadTasks() {
         console.log(taskData.Data[taskData.path.path()]);
     var p = Object.values(taskData.Data[taskData.path.path()])
     p.forEach(element => {
-        
+    taskCount++;    
     
     var e = document.createElement('div');
     
-    e.innerHTML = TaskTemplate(taskCount, element[0]);
-    taskobj.appendChild(e)
-    taskCount++;
+    e.innerHTML = TaskTemplate(taskCount, element.data[0]);
+    taskobj.appendChild(e) 
     });
 }
 }
@@ -75,6 +74,7 @@ function taskButtonClick(taskNumber) {
     var menuobj = document.getElementById("menu");
     menuobj.innerHTML = '';
     var q = -1;
+    console.log(taskNumber)
     console.log(taskData.Data[taskData.path.path()])
     if (taskData.Data[taskData.path.path()][taskNumber].data !== undefined) {
         taskData.Data[taskData.path.path()][taskNumber].data.forEach(element => {
@@ -100,9 +100,9 @@ function taskButtonClick(taskNumber) {
     }); 
     var o = document.createElement("button")  
     o.type = "button"
-    o.innerHTML = "subTasks"
+    o.innerHTML = "subtasks"
     o.onclick = () => {
-     taskData.path.setPathDown();
+     taskData.path.setPathDown(taskNumber);
      loadTasks();
     }
     menuobj.appendChild(o);
