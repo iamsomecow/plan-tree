@@ -120,6 +120,7 @@ function taskButtonClick(taskNumber) {
      
     }
     menuobj.appendChild(o);
+    menuobj.appendChild(v);
 }
 }
 
