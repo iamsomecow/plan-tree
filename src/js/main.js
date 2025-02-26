@@ -115,6 +115,7 @@ function taskButtonClick(taskNumber) {
         if(confirm("are you shere you want to delete this task and its subtasks? ")){
             deleteSubTasks(taskNumber + ".")
             taskData.Data[taskData.path.path()][taskNumber] = undefined;
+            loadTasks();
         }
     }
 
