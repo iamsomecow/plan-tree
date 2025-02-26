@@ -89,8 +89,9 @@ function taskButtonClick(taskNumber) {
             var i = document.createElement('div');
             i.innerHTML = `<label for="simpleInput">edit task:</label>
             <input type="text" id="input" name="simpleInput" placeholder="Enter text here">
-            <button onclick="SubmitEdit(this,`+ taskNumber + "," + a.id + `)">Submit</button>
-            <button onclick="CancelEdit(this)">Cancel</button>`;
+            <button type="button" onclick="newLine( `+ a.id + ","+ taskNumber +`)">new line</button>
+            <button type="button" onclick="SubmitEdit(this,`+ taskNumber + "," + a.id + `)">Submit</button>
+            <button type="button" onclick="CancelEdit(this)">Cancel</button>`;
             i.class = "editMenu"
             e.appendChild(i);
         }
@@ -168,5 +169,9 @@ function deleteMenu(){
     var menu = document.getElementById("menu");
     menu.innerHTML = "";
     
+}
+function newLine(id, taskNumber){
+    taskData.Data[taskData.path.path()][taskNumber].splice(id,0,"a new line")
+    taskButtonClick(taskNumber);
 }
  
