@@ -106,6 +106,7 @@ function taskButtonClick(taskNumber) {
      t.innerHTML += "<div>" + taskData.Data[taskData.path.path()][taskNumber].data[0] + "/</div>"
      taskData.path.setPathDown(taskNumber);
      loadTasks();
+    }
     var v = document.createElement("button") 
     v.type = "button"
     v.innerHTML("Delete")
@@ -122,7 +123,7 @@ function taskButtonClick(taskNumber) {
     menuobj.appendChild(o);
     menuobj.appendChild(v);
 }
-}
+
 
 function SubmitEdit(button, taskNumber, i) {
     var div = button.parentNode;
