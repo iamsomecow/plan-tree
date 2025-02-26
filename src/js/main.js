@@ -171,7 +171,7 @@ function deleteMenu(){
     
 }
 function newLine(id, taskNumber){
-    taskData.Data[taskData.path.path()][taskNumber].splice(id,0,"a new line")
+    taskData.Data[taskData.path.path()][taskNumber].data.splice(id,0,"a new line")
     taskButtonClick(taskNumber);
 }
  
