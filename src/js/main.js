@@ -161,7 +161,7 @@ function deleteSubTasks(subPath){
         d.forEach(element => {
             deleteSubTasks(subPath + element + ".");
         })
-        taskData.Data[taskData.path.path() + subPath] = undefined;
+        delete taskData.Data[taskData.path.path() + subPath];
     }
 }
 function deleteMenu(){
