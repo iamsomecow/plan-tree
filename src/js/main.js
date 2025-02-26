@@ -166,7 +166,7 @@ function deleteSubTasks(subPath){
 }
 function deleteMenu(){
     var menu = document.getElementById("menu");
-    menu.innerHTML("")
+    menu.innerHTML = "";
     
 }
  
