@@ -109,7 +109,7 @@ function taskButtonClick(taskNumber) {
     }
     var v = document.createElement("button") 
     v.type = "button"
-    v.innerHTML("Delete")
+    v.innerHTML = "Delete"
     v.style = "background-color: red"
     v.onclick = () => {
         if(confirm("are you shere you want to delete this task and its subtasks? ")){
