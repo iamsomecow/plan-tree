@@ -92,7 +92,7 @@ function taskButtonClick(taskNumber) {
             <button type="button" onclick="SubmitEdit(this,`+ taskNumber + "," + a.id + `)">Submit</button>
             <button type="button" onclick="CancelEdit(this)">Cancel</button>
             <button type="button" onclick="newLine( `+ a.id + ","+ taskNumber +`)">new line</button>
-            <button type="button" onclick="deleteLine(` + taskNumber + a.id +`) style="background-color: red" > delete this line</button>`
+            <button type="button" onclick="deleteLine(` + taskNumber + a.id +`)" style="background-color: red" > delete this line</button>`
             i.class = "editMenu"
             e.appendChild(i);
         }
