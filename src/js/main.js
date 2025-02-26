@@ -106,6 +106,7 @@ function taskButtonClick(taskNumber) {
      t.innerHTML += "<div>" + taskData.Data[taskData.path.path()][taskNumber].data[0] + "/</div>"
      taskData.path.setPathDown(taskNumber);
      loadTasks();
+     deleteMenu();
     }
     var v = document.createElement("button") 
     v.type = "button"
@@ -116,6 +117,7 @@ function taskButtonClick(taskNumber) {
             deleteSubTasks(taskNumber + ".")
             taskData.Data[taskData.path.path()][taskNumber] = undefined;
             loadTasks();
+            deleteMenu();
         }
     }
 
@@ -150,6 +152,7 @@ function up() {
         var t = document.getElementById("path");
         var g = t.children.item(t.children.length)
         g.remove;
+        deleteMenu();
     }
 }
 function deleteSubTasks(subPath){
@@ -160,5 +163,10 @@ function deleteSubTasks(subPath){
         })
         taskData.Data[taskData.path.path() + subPath] = undefined;
     }
+}
+function deleteMenu(){
+    var menu = document.getElementById("menu");
+    menu.innerHTML("")
+    
 }
  
