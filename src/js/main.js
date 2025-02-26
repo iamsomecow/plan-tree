@@ -151,8 +151,8 @@ function up() {
     if (taskData.path.setPathUp()) {
         loadTasks();
         var t = document.getElementById("path");
-        var g = t.children.item(t.children.length)
-        g.remove;
+        var g = t.children.item(t.children.length - 1)
+        g.remove();
         deleteMenu();
     }
 }
@@ -171,7 +171,7 @@ function deleteMenu(){
     
 }
 function newLine(id, taskNumber){
-    taskData.Data[taskData.path.path()][taskNumber].data.splice(id,0,"a new line")
+    taskData.Data[taskData.path.path()][taskNumber].data.splice(id + 1,0,"a new line")
     taskButtonClick(taskNumber);
 }
  
