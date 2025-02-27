@@ -28,12 +28,12 @@ class Path {
 class TaskData {
     Data = {}
     loadData(){
-        if (window.localStorage.getItem("data") !== null) {
-            this.Data = JSON.parse(window.localStorage.getItem("data")) 
+        if (window.localStorage.getItem("Data") !== null) {
+            this.Data = JSON.parse(window.localStorage.getItem("Data")) 
         }
     }
     saveData(){
-        window.localStorage.setItem("data", JSON.stringify(this.Data))
+        window.localStorage.setItem("Data", JSON.stringify(this.Data))
     }
     path = new Path()
     
