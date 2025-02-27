@@ -27,6 +27,14 @@ class Path {
 
 class TaskData {
     Data = {}
+    loadData(){
+        if (window.localStorage.getItem("data") !== null) {
+            this.Data = JSON.parse(window.localStorage.getItem("data")) 
+        }
+    }
+    saveData(){
+        window.localStorage.setItem("data", JSON.stringify(this.Data))
+    }
     path = new Path()
     
     Task(number, data) {
@@ -179,3 +187,4 @@ function deleteLine(taskNumber, id) {
     taskData.Data[taskData.path.path()][taskNumber].data.splice(id,1)
     taskButtonClick(taskNumber);    
 }
+taskData.loadData();
