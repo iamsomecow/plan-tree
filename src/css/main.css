@@ -2,6 +2,7 @@ body {
     background-color: dimgray;
 }
 .menu {
+    white-space: pre-wrap;
     display: block;
     background-color: silver;
     border-radius: 20px;
