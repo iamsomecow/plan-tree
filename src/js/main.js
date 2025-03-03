@@ -96,7 +96,7 @@ function taskButtonClick(taskNumber) {
         a.onclick = () => {
             var i = document.createElement('div');
             i.innerHTML = `<label for="simpleInput">edit task:</label>
-            <input type="text" id="input" name="simpleInput" placeholder="Enter text here">
+            <textarea id="input">
             <button type="button" onclick="SubmitEdit(this,`+ taskNumber + "," + a.id + `)">Submit</button>
             <button type="button" onclick="CancelEdit(this)">Cancel</button>
             <button type="button" onclick="newLine( `+ a.id + ","+ taskNumber +`)">new line</button>
