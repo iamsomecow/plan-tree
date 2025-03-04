@@ -108,6 +108,8 @@ function taskButtonClick(taskNumber) {
         menuobj.appendChild(a);
         
     }); 
+    menuobj.innerHTML =+ `
+    `
     var o = document.createElement("button")  
     o.type = "button"
     o.innerHTML = "subtasks"
