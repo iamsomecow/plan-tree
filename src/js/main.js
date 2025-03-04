@@ -188,3 +188,4 @@ function deleteLine(taskNumber, id) {
     taskButtonClick(taskNumber);    
 }
 taskData.loadData();
+loadTasks()
