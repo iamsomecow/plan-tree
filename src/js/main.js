@@ -88,6 +88,7 @@ function taskButtonClick(taskNumber) {
         taskData.Data[taskData.path.path()][taskNumber].data.forEach(element => {
         q++;
         var e = document.createElement('div');
+        e.style = ("white-space: pre-wrap;")
         e.innerHTML = element;
         menuobj.appendChild(e);
         var a = document.createElement('button');
@@ -108,8 +109,7 @@ function taskButtonClick(taskNumber) {
         menuobj.appendChild(a);
         
     }); 
-    menuobj.innerHTML += `
-    `
+    menuobj.innerHTML += "<br>"
     var o = document.createElement("button")  
     o.type = "button"
     o.innerHTML = "subtasks"
