@@ -110,6 +110,7 @@ function taskButtonClick(taskNumber) {
                 var input = marked.parse(temp);
                 SubmitEdit(this, taskNumber, a.id, input);
             }
+            i.appendChild(x);
             i.innerHTML += `
             <button type="button" onclick="CancelEdit(this)">Cancel</button>
             <button type="button" onclick="newLine( `+ a.id + ","+ taskNumber +`)">new line</button>
