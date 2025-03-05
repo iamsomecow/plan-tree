@@ -95,14 +95,29 @@ function taskButtonClick(taskNumber) {
         a.type = "button";
         a.id = q;
         a.onclick = () => {
+
             var i = document.createElement('div');
-            i.innerHTML = `<label for="input">edit task:</label>
-            <textarea id="input"></textarea>
-            <button type="button" onclick="SubmitEdit(this,`+ taskNumber + "," + a.id + `)">Submit</button>
+            var textArea = document.createElement('textarea');
+            var appendedTextArea = e.appendChild(textArea);
+            const easymde = new EasyMDE({
+                element: appendedTextArea
+            }) 
+            
+            var x = document.createElement(button);
+            x.type = "button";
+            x.onclick = () => {
+                var temp = easymde.value()
+                var input = marked.parse(temp);
+                SubmitEdit(this, taskNumber, a.id, input);
+            }
+            i.innerHTML += `
             <button type="button" onclick="CancelEdit(this)">Cancel</button>
             <button type="button" onclick="newLine( `+ a.id + ","+ taskNumber +`)">new line</button>
             <button type="button" onclick="deleteLine(` + taskNumber + "," + a.id +`)" style="background-color: red" > delete this line</button>`
             i.class = "editMenu"
+            
+            
+            
             e.appendChild(i);
         }
         a.innerHTML = "edit";
@@ -141,17 +156,16 @@ function taskButtonClick(taskNumber) {
 }
 
 
-function SubmitEdit(button, taskNumber, i) {
+function SubmitEdit(button, taskNumber, i, input) {
     var div = button.parentNode;
     var parent = div.parentNode;
-    var input = div.querySelector('#input');
     div.remove(); 
-    taskData.Data[taskData.path.path()][taskNumber].data[i] = input.value;
-    parent.innerHTML = input.value;
+    taskData.Data[taskData.path.path()][taskNumber].data[i] = input;
+    parent.innerHTML = input;
     if (i === 0) {
         var tasks = document.getElementById("tasks");
         var task = tasks.children.item(taskNumber);
-        task.innerHTML = TaskTemplate(taskNumber, input.value);
+        task.innerHTML = TaskTemplate(taskNumber, input);
     }
 }
 
