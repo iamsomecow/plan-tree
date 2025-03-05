@@ -109,12 +109,12 @@ function taskButtonClick(taskNumber) {
             x.onclick = () => {
                 var temp = easymde.value()
                 var input = marked.parse(temp);
-                SubmitEdit(this, taskNumber, a.id, input);
+                SubmitEdit(d, taskNumber, a.id, input);
             }  
             i.appendChild(x);
             var f = document.createElement("button")
             f.type = "button"; 
-            f.onclick = () => CancelEdit(this);
+            f.onclick = () => CancelEdit(d);
             f.innerHTML = "Cancel";
             i.appendChild(f);
             var d = document.createElement("button")
@@ -129,7 +129,7 @@ function taskButtonClick(taskNumber) {
             m.style = "background-color: red"
             i.appendChild(m)
             i.class = "editMenu"
-            e.appendChild(i);
+            var g = e.appendChild(i);
         }
         a.innerHTML = "edit";
         menuobj.appendChild(a);
@@ -167,8 +167,7 @@ function taskButtonClick(taskNumber) {
 }
 
 
-function SubmitEdit(button, taskNumber, i, input) {
-    var div = button.parentNode;
+function SubmitEdit(div, taskNumber, i, input) {
     var parent = div.parentNode;
     div.remove(); 
     taskData.Data[taskData.path.path()][taskNumber].data[i] = input;
@@ -180,8 +179,7 @@ function SubmitEdit(button, taskNumber, i, input) {
     }
 }
 
-function CancelEdit(button) {
-    var div = button.parentNode;
+function CancelEdit(div) {
     div.remove();
 }
 function up() {
