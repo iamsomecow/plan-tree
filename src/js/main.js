@@ -167,7 +167,8 @@ function taskButtonClick(taskNumber) {
 }
 
 
-function SubmitEdit(div, taskNumber, i, input) {
+function SubmitEdit(b, taskNumber, i, input) {
+    var div = b.parentNode;
     var parent = div.parentNode;
     div.remove(); 
     taskData.Data[taskData.path.path()][taskNumber].data[i] = input;
@@ -179,7 +180,8 @@ function SubmitEdit(div, taskNumber, i, input) {
     }
 }
 
-function CancelEdit(div) {
+function CancelEdit(b) {
+    var div = b.parentNode;
     div.remove();
 }
 function up() {
