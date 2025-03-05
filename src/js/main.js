@@ -105,20 +105,30 @@ function taskButtonClick(taskNumber) {
             
             var x = document.createElement("button");
             x.type = "button";
+            x.innerHTML = "Submit"
             x.onclick = () => {
                 var temp = easymde.value()
                 var input = marked.parse(temp);
                 SubmitEdit(this, taskNumber, a.id, input);
-            }
+            }  
             i.appendChild(x);
-            i.innerHTML += `
-            <button type="button" onclick="CancelEdit(this)">Cancel</button>
-            <button type="button" onclick="newLine( `+ a.id + ","+ taskNumber +`)">new line</button>
-            <button type="button" onclick="deleteLine(` + taskNumber + "," + a.id +`)" style="background-color: red" > delete this line</button>`
+            var f = document.createElement("button")
+            f.type = "button"; 
+            f.onclick = CancelEdit(this);
+            f.innerHTML = "Cancel";
+            i.appendChild(f);
+            var d = document.createElement("button")
+            d.type = "button"; 
+            d.onclick = newLine(a.id, taskNumber);
+            d.innerHTML = "new line";
+            i.appendChild(d);
+            var m = document.createElement("button")
+            m.type = "button"; 
+            m.onclick = deleteLine(taskNumber, a.id);
+            m.innerHTML = "delete this line";
+            m.style = "background-color: red"
+            i.appendChild(m)
             i.class = "editMenu"
-            
-            
-            
             e.appendChild(i);
         }
         a.innerHTML = "edit";
