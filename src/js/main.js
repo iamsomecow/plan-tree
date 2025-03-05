@@ -103,7 +103,7 @@ function taskButtonClick(taskNumber) {
                 element: appendedTextArea
             }) 
             
-            var x = document.createElement(button);
+            var x = document.createElement("button");
             x.type = "button";
             x.onclick = () => {
                 var temp = easymde.value()
