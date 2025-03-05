@@ -114,17 +114,17 @@ function taskButtonClick(taskNumber) {
             i.appendChild(x);
             var f = document.createElement("button")
             f.type = "button"; 
-            f.onclick = CancelEdit(this);
+            f.onclick = () => CancelEdit(this);
             f.innerHTML = "Cancel";
             i.appendChild(f);
             var d = document.createElement("button")
             d.type = "button"; 
-            d.onclick = newLine(a.id, taskNumber);
+            d.onclick = () => newLine(a.id, taskNumber);
             d.innerHTML = "new line";
             i.appendChild(d);
             var m = document.createElement("button")
             m.type = "button"; 
-            m.onclick = deleteLine(taskNumber, a.id);
+            m.onclick = () => deleteLine(taskNumber, a.id);
             m.innerHTML = "delete this line";
             m.style = "background-color: red"
             i.appendChild(m)
