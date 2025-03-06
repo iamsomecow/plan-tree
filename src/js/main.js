@@ -66,8 +66,9 @@ function redo() {
     current++
 }
 function Do(){
-    current++
+    
     history[current] = taskData.Data;
+    current++
 }
 var taskData = new TaskData();
 var taskCount = 0;
@@ -131,7 +132,7 @@ function taskButtonClick(taskNumber) {
                 element: appendedTextArea
             }) 
             var temp2 = marked.parse(element);
-            easymde.value = temp2;
+            easymde.value(temp2);
             var x = document.createElement("button");
             x.type = "button";
             x.innerHTML = "Submit"
