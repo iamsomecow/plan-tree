@@ -95,6 +95,7 @@ function TaskTemplate(number, name = "new task") {
 }
 
 function newTask() {
+    Do()
     isUnsavedWork = true; // Set this variable to true when there's unsaved work
     taskCount++;
     var taskobj = document.getElementById("tasks");
@@ -103,7 +104,7 @@ function newTask() {
     e.id = taskCount;
     taskobj.appendChild(e);
     taskData.Task(taskCount, ["new task", "this is a new task", "working on it"]);
-    Do()
+    
 }
 
 function taskButtonClick(taskNumber) {
@@ -184,13 +185,14 @@ function taskButtonClick(taskNumber) {
     v.style = "background-color: red"
     v.onclick = () => {
         if(confirm("are you shere you want to delete this task and its subtasks? ")){
+            Do()
             currentTaskNumber = undefined;
             isUnsavedWork = true;
             deleteSubTasks(taskNumber + ".")
             delete taskData.Data[taskData.path.path()][taskNumber];
             loadTasks();
             deleteMenu();
-            Do()
+            
         }
     }
 
@@ -202,7 +204,7 @@ function taskButtonClick(taskNumber) {
 
 
 function SubmitEdit(b, taskNumber, i, input) {
-    
+    Do()
     isUnsavedWork = true; // Set this variable to true when there's unsaved work
     var div = b.parentNode;
     var parent = div.parentNode;
@@ -214,7 +216,7 @@ function SubmitEdit(b, taskNumber, i, input) {
         var task = tasks.children.item(taskNumber);
         task.innerHTML = TaskTemplate(taskNumber, input);
     }
-    Do()
+    
 }
 
 function CancelEdit(b) {
@@ -246,16 +248,18 @@ function deleteMenu(){
     
 }
 function newLine(id, taskNumber){
+    Do()
     isUnsavedWork = true; // Set this variable to true when there's unsaved work
     taskData.Data[taskData.path.path()][taskNumber].data.splice(id + 1,0,"a new line")
     taskButtonClick(taskNumber);
-    Do();
+    
 }
 function deleteLine(taskNumber, id) {
+    Do()
     isUnsavedWork = true;
     taskData.Data[taskData.path.path()][taskNumber].data.splice(id,1)
     taskButtonClick(taskNumber);
-    Do();    
+    
 } 
 taskData.loadData();
 loadTasks()
