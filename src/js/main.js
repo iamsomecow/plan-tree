@@ -44,9 +44,34 @@ class TaskData {
         this.Data[this.path.path()][number] = { data: data };
     }
 }
-
+var history = [] 
+var future = []
+var current = 0
+var currentTaskNumber 
+function undo() {
+    if (current !== 0) {
+        current -= 1;
+        future[current] = taskData.Data;
+        taskData.Data = history[current];
+        loadTasks();
+        if (currentTaskNumber !== undefined)
+        {
+            taskButtonClick(currentTaskNumber)
+        }
+    }
+}
+function redo() {
+    history[current] = taskData.Data;
+    taskData.Data = future[current]
+    current++
+}
+function Do(){
+    current++
+    history[current] = taskData.Data;
+}
 var taskData = new TaskData();
 var taskCount = 0;
+let isUnsavedWork = false; // Set this variable to true when there's unsaved work
 function loadTasks() {
     var taskobj = document.getElementById("tasks");
     taskobj.innerHTML = '<button type="button" class="newtasks" onclick="newTask()">new task</button>';
@@ -69,6 +94,7 @@ function TaskTemplate(number, name = "new task") {
 }
 
 function newTask() {
+    isUnsavedWork = true; // Set this variable to true when there's unsaved work
     taskCount++;
     var taskobj = document.getElementById("tasks");
     var e = document.createElement('div');
@@ -76,9 +102,11 @@ function newTask() {
     e.id = taskCount;
     taskobj.appendChild(e);
     taskData.Task(taskCount, ["new task", "this is a new task", "working on it"]);
+    Do()
 }
 
 function taskButtonClick(taskNumber) {
+    currentTaskNumber = taskNumber;
     var menuobj = document.getElementById("menu");
     menuobj.innerHTML = '';
     var q = -1;
@@ -102,7 +130,8 @@ function taskButtonClick(taskNumber) {
             const easymde = new EasyMDE({
                 element: appendedTextArea
             }) 
-            
+            var temp2 = marked.parse(element);
+            easymde.value = temp2;
             var x = document.createElement("button");
             x.type = "button";
             x.innerHTML = "Submit"
@@ -141,11 +170,12 @@ function taskButtonClick(taskNumber) {
     o.type = "button"
     o.innerHTML = "subtasks"
     o.onclick = () => {
+        currentTaskNumber = undefined;
         var t = document.getElementById("path");
-     t.innerHTML += "<div>" + taskData.Data[taskData.path.path()][taskNumber].data[0] + "/</div>"
-     taskData.path.setPathDown(taskNumber);
-     loadTasks();
-     deleteMenu();
+        t.innerHTML += "<div>" + taskData.Data[taskData.path.path()][taskNumber].data[0] + "/</div>"
+        taskData.path.setPathDown(taskNumber);
+        loadTasks();
+        deleteMenu();
     }
     var v = document.createElement("button") 
     v.type = "button"
@@ -153,10 +183,13 @@ function taskButtonClick(taskNumber) {
     v.style = "background-color: red"
     v.onclick = () => {
         if(confirm("are you shere you want to delete this task and its subtasks? ")){
+            currentTaskNumber = undefined;
+            isUnsavedWork = true;
             deleteSubTasks(taskNumber + ".")
             delete taskData.Data[taskData.path.path()][taskNumber];
             loadTasks();
             deleteMenu();
+            Do()
         }
     }
 
@@ -168,6 +201,8 @@ function taskButtonClick(taskNumber) {
 
 
 function SubmitEdit(b, taskNumber, i, input) {
+    
+    isUnsavedWork = true; // Set this variable to true when there's unsaved work
     var div = b.parentNode;
     var parent = div.parentNode;
     div.remove(); 
@@ -178,6 +213,7 @@ function SubmitEdit(b, taskNumber, i, input) {
         var task = tasks.children.item(taskNumber);
         task.innerHTML = TaskTemplate(taskNumber, input);
     }
+    Do()
 }
 
 function CancelEdit(b) {
@@ -186,6 +222,7 @@ function CancelEdit(b) {
 }
 function up() {
     if (taskData.path.setPathUp()) {
+        currentTaskNumber = undefined;
         loadTasks();
         var t = document.getElementById("path");
         var g = t.children.item(t.children.length - 1)
@@ -208,12 +245,33 @@ function deleteMenu(){
     
 }
 function newLine(id, taskNumber){
+    isUnsavedWork = true; // Set this variable to true when there's unsaved work
     taskData.Data[taskData.path.path()][taskNumber].data.splice(id + 1,0,"a new line")
     taskButtonClick(taskNumber);
+    Do();
 }
 function deleteLine(taskNumber, id) {
+    isUnsavedWork = true;
     taskData.Data[taskData.path.path()][taskNumber].data.splice(id,1)
-    taskButtonClick(taskNumber);    
-}
+    taskButtonClick(taskNumber);
+    Do();    
+} 
 taskData.loadData();
 loadTasks()
+window.addEventListener('beforeunload', function (e) {
+    // Check if there's unsaved work
+    if (isUnsavedWork) {
+        // Display a warning message to the user
+        var confirmationMessage = "You have unsaved changes. Are you sure you want to leave this page?";
+
+        // Standard for most browsers
+        e.preventDefault();
+        e.returnValue = ' ';
+
+        // For compatibility with some browsers
+        return confirmationMessage;
+    }
+});
+
+
+
