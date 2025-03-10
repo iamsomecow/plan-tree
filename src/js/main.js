@@ -210,7 +210,7 @@ function SubmitEdit(b, taskNumber, i, input) {
     var input2 = marked.parse(input);
     taskData.Data[taskData.path.path()][taskNumber].data[i] = input;
     parent.innerHTML = input2;
-    if (i === 0) {
+    if (i === "0") {
         var tasks = document.getElementById("tasks");
         var task = tasks.children.item(taskNumber);
         task.innerHTML = TaskTemplate(taskNumber, input2);
