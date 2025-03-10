@@ -84,8 +84,8 @@ function loadTasks() {
     taskCount++;    
     
     var e = document.createElement('div');
-    
-    e.innerHTML = TaskTemplate(taskCount, element.data[0]);
+    var v = marked.parse(element.data[0])
+    e.innerHTML = TaskTemplate(taskCount, v);
     taskobj.appendChild(e) 
     });
 }
@@ -119,7 +119,7 @@ function taskButtonClick(taskNumber) {
         q++;
         var e = document.createElement('div');
         e.style = ("white-space: pre-wrap;")
-        e.innerHTML = element;
+        e.innerHTML = marked.parse(element);
         menuobj.appendChild(e);
         var a = document.createElement('button');
         a.type = "button";
@@ -132,14 +132,12 @@ function taskButtonClick(taskNumber) {
             const easymde = new EasyMDE({
                 element: appendedTextArea
             }) 
-            var temp2 = marked.parse(element);
-            easymde.value(temp2);
+            easymde.value(element);
             var x = document.createElement("button");
             x.type = "button";
             x.innerHTML = "Submit"
             x.onclick = () => {
-                var temp = easymde.value()
-                var input = marked.parse(temp);
+                var input = easymde.value()
                 SubmitEdit(d, taskNumber, a.id, input);
             }  
             i.appendChild(x);
@@ -174,7 +172,7 @@ function taskButtonClick(taskNumber) {
     o.onclick = () => {
         currentTaskNumber = undefined;
         var t = document.getElementById("path");
-        t.innerHTML += "<div>" + taskData.Data[taskData.path.path()][taskNumber].data[0] + "/</div>"
+        t.innerHTML += "<div>" + marked.parse(taskData.Data[taskData.path.path()][taskNumber].data[0]) + "/</div>"
         taskData.path.setPathDown(taskNumber);
         loadTasks();
         deleteMenu();
@@ -209,12 +207,13 @@ function SubmitEdit(b, taskNumber, i, input) {
     var div = b.parentNode;
     var parent = div.parentNode;
     div.remove(); 
+    var input2 = marked.parse(input);
     taskData.Data[taskData.path.path()][taskNumber].data[i] = input;
-    parent.innerHTML = input;
+    parent.innerHTML = input2;
     if (i === 0) {
         var tasks = document.getElementById("tasks");
         var task = tasks.children.item(taskNumber);
-        task.innerHTML = TaskTemplate(taskNumber, input);
+        task.innerHTML = TaskTemplate(taskNumber, input2);
     }
     
 }
