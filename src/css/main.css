@@ -61,14 +61,10 @@ transform: none;
 transform-origin: 50% 50% 0;
 overflow: hidden;
 }
-#tasks{
-    display:flex !important;
-    align-items:stretch;
-    flex-direction:row;
-    flex-wrap:nowrap;
-   }
+
+
 .tasks{
-    
+  display: grid;
   cursor: pointer;
   margin: 10px;
   padding: 10px 20px;
