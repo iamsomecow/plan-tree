@@ -61,11 +61,14 @@ transform: none;
 transform-origin: 50% 50% 0;
 overflow: hidden;
 }
+#tasks{
+    display: grid;
+  grid-template-columns: auto auto auto auto;
+}
 
 
 .tasks{
-  display: grid;
-  grid-template-columns: auto auto auto auto;
+  
   cursor: pointer;
   margin: 10px;
   padding: 10px 20px;
