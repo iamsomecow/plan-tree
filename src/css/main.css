@@ -61,13 +61,14 @@ transform: none;
 transform-origin: 50% 50% 0;
 overflow: hidden;
 }
+#tasks{
+    display:flex !important;
+    align-items:stretch;
+    flex-direction:row;
+    flex-wrap:nowrap;
+   }
 .tasks{
-    align-content: center;
-    display: inline-block;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  width: 200px;
+    
   cursor: pointer;
   margin: 10px;
   padding: 10px 20px;
