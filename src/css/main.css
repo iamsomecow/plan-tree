@@ -63,12 +63,13 @@ overflow: hidden;
 }
 #tasks{
     display: grid;
-  grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto;
 }
 
 
 .tasks{
-  
+    width: auto;
+    height: auto;
   cursor: pointer;
   margin: 10px;
   padding: 10px 20px;
@@ -102,7 +103,8 @@ overflow: hidden;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  width: 200px;
+  width: auto;
+  height: auto;
   cursor: pointer;
   padding: 10px 20px;
   border: 3px solid #000000;
