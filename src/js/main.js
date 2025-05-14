@@ -44,10 +44,10 @@ class TaskData {
         this.Data[this.path.path()][number] = { data: data };
     }
 }
-var history = [] 
-var future = []
-var current = 0
-var currentTaskNumber 
+var history = []; 
+var future = [];
+var current = 0;
+var currentTaskNumber; 
 function undo() {
     if (current !== 0) {
         current -= 1;
@@ -219,7 +219,8 @@ function SubmitEdit(b, taskNumber, i, input) {
 }
 
 function CancelEdit(b) {
-    var div = b.parentNode;
+    var up = b.parentNode;
+    var div = up.parentNode;
     div.remove();
 }
 function up() {
